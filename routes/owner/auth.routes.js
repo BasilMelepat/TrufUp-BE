@@ -1,4 +1,4 @@
-import { Router } from "express";
+import e from "express";
 import {
   registerOwner,
   loginOwner,
@@ -10,9 +10,10 @@ import {
   validateOwnerRequestInput,
 } from "../../middleware/validators/owner/authValidator.js";
 
-const authRouter = Router();
-authRouter.post("/register",validateRegisterInput,  registerOwner);
-authRouter.post("/login",validateLoginInput, loginOwner);
-authRouter.post("/ownerRequest",validateOwnerRequestInput, ownerRequest);
+const router= e.Router();
 
-export default authRouter;
+router.post("/register",validateRegisterInput,  registerOwner);
+router.post("/login",validateLoginInput, loginOwner);
+router.post("/ownerRequest",validateOwnerRequestInput, ownerRequest);
+
+export {router as authRouter};

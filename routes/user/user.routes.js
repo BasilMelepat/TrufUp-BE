@@ -1,15 +1,15 @@
-import { Router } from "express";
-import authRouter from "./auth.routes.js"
-import turfRouter from "./turf.routes.js"
-import bookingRouter from "./booking.routes.js"
-import reviewRouter from "./review.routes.js"
+import e from "express";
+import {authRouter} from "./auth.routes.js"
+import {turfRouter} from "./turf.routes.js"
+import {bookingRouter} from "./booking.routes.js"
+import {reviewRouter} from "./review.routes.js"
 
 
-const userRouter = Router();
+const router= e.Router();
 
-userRouter.use("/auth", authRouter);
-userRouter.use("/turf", turfRouter);
-userRouter.use("/booking", bookingRouter);
-userRouter.use("/review", reviewRouter)
+router.use("/auth", authRouter);
+router.use("/turf", turfRouter);
+router.use("/booking", bookingRouter);
+router.use("/review", reviewRouter)
 
-export default userRouter;
+export {router as userRouter}

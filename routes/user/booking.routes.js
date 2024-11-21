@@ -1,4 +1,4 @@
-import { Router } from "express";
+import e from "express";
 import {
   verifyPayment,
   createOrder,
@@ -6,10 +6,10 @@ import {
 } from "../../controllers/user/booking.controller.js";
 import verifyUserToken from "../../middleware/jwt/user.middleware.js";
 
-const bookingRouter = Router();
+const router= e.Router();
 
-bookingRouter.post("/create-order", verifyUserToken, createOrder);
-bookingRouter.post("/verify-payment", verifyUserToken, verifyPayment);
-bookingRouter.get("/get-bookings", verifyUserToken, getBookings);
+router.post("/create-order", verifyUserToken, createOrder);
+router.post("/verify-payment", verifyUserToken, verifyPayment);
+router.get("/get-bookings", verifyUserToken, getBookings);
 
-export default bookingRouter;
+export {router as bookingRouter};

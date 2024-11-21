@@ -1,15 +1,16 @@
-import { Router } from "express"
-import authRouter from "./auth.routes.js"
-import turfRouter from "./turf.routes.js"
-import reviewsRouter from "./reviews.routes.js"
-import bookingsRouter from "./bookings.routes.js"
+import e from "express";
+import {authRouter} from "./auth.routes.js"
+import {turfRouter} from "./turf.routes.js"
+import {reviewsRouter} from "./reviews.routes.js"
+import {bookingsRouter} from "./bookings.routes.js"
+import {dashboardRouter} from "./dashboard.routes.js"
 
-const ownerRouter = Router()
+const router= e.Router();
 
+router.use("/auth",authRouter);
+router.use("/turf",turfRouter);
+router.use("/reviews",reviewsRouter);
+router.use("/bookings",bookingsRouter);
+router.use("/dashboard", dashboardRouter)
 
-ownerRouter.use("/auth",authRouter);
-ownerRouter.use("/turf",turfRouter);
-ownerRouter.use("/reviews",reviewsRouter);
-ownerRouter.use("/bookings",bookingsRouter);
-
-export default ownerRouter;
+export {router as ownerRouter}

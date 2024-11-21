@@ -1,4 +1,4 @@
-import { Router } from "express";
+import e from "express";
  import {
   turfRegister,
   getTurfByOwner,
@@ -7,18 +7,12 @@ import { Router } from "express";
 import upload from "../../middleware/uploads/upload.middleware.js";
 import verifyOwnerToken from "../../middleware/jwt/owner.middleware.js";
 
-const turfRouter = Router();
+const router= e.Router();
 
-turfRouter.post(
-  "/register",
-  verifyOwnerToken,
-  upload.single("image"),
-  
-  turfRegister
-);
+router.post("/register",verifyOwnerToken,upload.single("image"),turfRegister);
 
-turfRouter.get("/all", verifyOwnerToken, getTurfByOwner);
-turfRouter.put("/:id", verifyOwnerToken,  editTurfById);
+router.get("/all", verifyOwnerToken, getTurfByOwner);
+router.put("/:id", verifyOwnerToken,  editTurfById);
 
 
-export default turfRouter;
+export {router as turfRouter}

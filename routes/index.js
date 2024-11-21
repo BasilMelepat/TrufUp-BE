@@ -1,12 +1,12 @@
-import { Router } from "express";
-import userRouter from "./user/user.routes.js";
-import ownerRouter from "./owner/owner.routes.js";
-import adminRouter from "./admin/admin.routes.js";
+import e from "express";
+import {userRouter} from "./user/user.routes.js";
+import {ownerRouter} from "./owner/owner.routes.js";
+import {adminRouter} from "./admin/admin.routes.js";
 
-const rootRouter = Router();
+const router  = e.Router()
 
-rootRouter.use("/user", userRouter);
-rootRouter.use("/owner", ownerRouter)
-rootRouter.use("/admin", adminRouter)
+router.use("/user", userRouter);
+router.use("/owner", ownerRouter)
+router.use("/admin", adminRouter)
 
-export default rootRouter;
+export { router as apiRouter }

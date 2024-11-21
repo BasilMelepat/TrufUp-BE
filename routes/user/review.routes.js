@@ -1,13 +1,13 @@
-import express from "express";
+import e from "express";
 import {
   addReview,
   viewReviewsByTurf,
 } from "../../controllers/user/review.controller.js";
 import verifyUserToken from "../../middleware/jwt/user.middleware.js";
 
-const reviewRouter = express.Router();
+const router= e.Router();
 
-reviewRouter.post("/:id", verifyUserToken, addReview);
-reviewRouter.get("/:id", viewReviewsByTurf);
+router.post("/:id", verifyUserToken, addReview);
+router.get("/:id", viewReviewsByTurf);
 
-export default reviewRouter;
+export {router as reviewRouter};

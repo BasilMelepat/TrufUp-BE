@@ -1,9 +1,9 @@
-import express from "express";
+import e from "express";
 import {getAllUsers} from "../../controllers/admin/userManagement.controller.js"
 import verifyAdminToken from "../../middleware/jwt/admin.middleware.js";
 
-const userManagementRouter = express.Router();
+const router = e.Router();
 
-userManagementRouter.get("/all", getAllUsers);
+router.get("/all", getAllUsers);
 
-export default userManagementRouter;
+export { router as userManagementRouter}

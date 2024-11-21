@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import connectDB from "./config/database.js";
 import dotenv from "dotenv";
-import rootRouter from "./routes/index.js";
+import { apiRouter } from "./routes/index.js";
 
 dotenv.config();
 
@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(cors());
 
 // routes
-app.use("/api", rootRouter);
+app.use("/api", apiRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");

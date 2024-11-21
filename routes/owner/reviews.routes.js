@@ -1,9 +1,10 @@
-import {Router} from "express";
+import e from "express";
 import verifyOwnerToken from "../../middleware/jwt/owner.middleware.js";
 
 import { getTurfsWithReviews } from "../../controllers/owner/review.controller.js";
-const reviewsRouter = Router();
 
-reviewsRouter.get("/turfs-with-reviews", verifyOwnerToken, getTurfsWithReviews);
+const router= e.Router();
 
-export default reviewsRouter;
+router.get("/turfs-with-reviews", verifyOwnerToken, getTurfsWithReviews);
+
+export {router as reviewsRouter};

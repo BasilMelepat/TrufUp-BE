@@ -1,9 +1,9 @@
-import { Router } from "express";
+import e from "express";
 import { getAllOwners, getTurfByOwnerId } from "../../controllers/admin/ownerManagement.controller.js";
 
-const ownerManagementRouter = Router();
+const router = e.Router()
 
-ownerManagementRouter.get("/list", getAllOwners);
-ownerManagementRouter.get("/:id/turf", getTurfByOwnerId);
+router.get("/list", getAllOwners);
+router.get("/:id/turf", getTurfByOwnerId);
 
-export default ownerManagementRouter;
+export { router as ownerManagementRouter }

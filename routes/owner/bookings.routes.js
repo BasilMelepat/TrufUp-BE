@@ -1,9 +1,10 @@
-import express from "express";
+import e from "express";
 import {getOwnerBookings} from "../../controllers/owner/booking.controller.js";
 import verifyOwnerToken from "../../middleware/jwt/owner.middleware.js";
 
-const bookingsRouter = express.Router();
-bookingsRouter.get("/", verifyOwnerToken, getOwnerBookings);
+const router= e.Router();
+
+router.get("/", verifyOwnerToken, getOwnerBookings);
 
 
-export default bookingsRouter;
+export {router as bookingsRouter}
