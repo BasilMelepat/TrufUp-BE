@@ -12,12 +12,8 @@ const getDashboard = async (req, res) => {
     const totalOwners = await Owner.countDocuments({ role: "owner" });
     const totalTurfs = await Turf.countDocuments();
     const totalBookings = await Booking.countDocuments();
-    const pendingRequests = await OwnerRequest.countDocuments({
-      status: "pending",
-    });
-    const rejectedRequests = await OwnerRequest.countDocuments({
-      status: "rejected",
-    });
+    const pendingRequests = await OwnerRequest.countDocuments({ status: "pending" });
+    const rejectedRequests = await OwnerRequest.countDocuments({ status: "rejected" });
 
     const thirtyDaysAgo = new Date();
     thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);

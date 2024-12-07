@@ -1,14 +1,6 @@
 import e from "express";
-import {
-  registerOwner,
-  loginOwner,
-  ownerRequest,
-} from "../../controllers/owner/auth.controller.js";
-import {
-  validateRegisterInput,
-  validateLoginInput,
-  validateOwnerRequestInput,
-} from "../../middleware/validators/owner/authValidator.js";
+import { registerOwner,loginOwner,ownerRequest } from "../../controllers/owner/auth.controller.js";
+import { validateRegisterInput,validateLoginInput,validateOwnerRequestInput } from "../../middleware/validators/owner/authValidator.js";
 
 const router= e.Router();
 

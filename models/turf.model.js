@@ -11,11 +11,7 @@ const turfSchema = new mongoose.Schema(
     openTime: { type: String, required: true },
     closeTime: { type: String, required: true },
     reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "Review" }],
-    owner: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Owner",
-      required: true,
-    },
+    owner: { type: mongoose.Schema.Types.ObjectId, ref: "Owner", required: true },
   },
   { timestamps: true }
 );
