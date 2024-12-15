@@ -26,7 +26,7 @@ export default async function generateEmail(to, subject, html) {
   }
 }
 
-export const generateHTMLContent = (turfName, userName, location,date,startTime,endTime,totalPrice, QRcode) => {
+export const generateHTMLContent = (userName, turfName, location,date,startTime,endTime,totalPrice, QRcode) => {
   return `
 <!DOCTYPE html>
 <html lang="en">
@@ -96,7 +96,7 @@ export const generateHTMLContent = (turfName, userName, location,date,startTime,
             <p><strong>Total Price:</strong> ${totalPrice}</p>
         </div>
         <div class="qr-code">
-            <img src="${QRcode}" alt="QR Code">
+            <img src="${QRcode}" alt="TurfUp Entry Pass">
         </div>
         <p>Thank you for using our service.</p>
         <p>Best Regards,<br>The Team</p>

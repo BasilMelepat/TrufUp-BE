@@ -123,6 +123,7 @@ export const verifyPayment = async (req, res) => {
 
     // Generate and send email
     const htmlContent = generateHTMLContent(
+      user.name,
       turf.name,
       turf.location,
       formattedDate,
