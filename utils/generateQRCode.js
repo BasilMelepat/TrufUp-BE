@@ -1,7 +1,7 @@
 import QRCode from "qrcode";
 import cloudinary from "./cloudinary.js"
 
-async function generateQRCode( price, startTime, endTime, date, turfName, location ) {
+async function generateQRCode( userName, price, startTime, endTime, date, turfName, location ) {
   try {
     // Create the content string
     const content = `Name: ${userName}\nTurf Name: ${turfName}\nLocation: ${location}\nPrice: ${price}\nDate: ${date}\nStart Time: ${startTime}\nEnd Time: ${endTime}`;
