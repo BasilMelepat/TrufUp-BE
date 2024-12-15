@@ -84,13 +84,13 @@ export const verifyPayment = async (req, res) => {
 
     //  generate QR code
     const QRcode = await generateQRCode(     
-      turf.name,
       user.name,
+      turf.name,
       turf.location,
       formattedDate,
-      totalPrice,
       formattedStartTime,
-      formattedEndTime
+      formattedEndTime,
+      totalPrice
     );
 
     // Create time slot and booking
