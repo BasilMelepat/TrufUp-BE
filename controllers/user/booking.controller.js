@@ -154,7 +154,7 @@ export const getBookings = async (req, res) => {
     .sort({ createdAt: -1 })
     .select("qrCode totalPrice")
     .populate("timeSlot", "startTime endTime")
-    .populate("turf", "name", "location");
+    .populate("turf", "name location");
       console.log(bookings, "bookings");
     return res.status(200).json(bookings);
   } catch (error) {
