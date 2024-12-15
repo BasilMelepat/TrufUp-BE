@@ -5,9 +5,7 @@ import Booking from "../../models/booking.model.js";
 import TimeSlot from "../../models/timeSlot.model.js";
 import generateQRCode from "../../utils/generateQRCode.js";
 import Turf from "../../models/turf.model.js";
-import generateEmail, {
-  generateHTMLContent,
-} from "../../utils/generateEmail.js";
+import generateEmail, { generateHTMLContent } from "../../utils/generateEmail.js";
 import User from "../../models/user.model.js";
 import { format, parseISO } from "date-fns";
 
@@ -91,6 +89,7 @@ export const verifyPayment = async (req, res) => {
       formattedEndTime,
       formattedDate,
       turf.name,
+      user.name,
       turf.location
     );
 
@@ -155,7 +154,7 @@ export const getBookings = async (req, res) => {
     .sort({ createdAt: -1 })
     .select("qrCode totalPrice")
     .populate("timeSlot", "startTime endTime")
-    .populate("turf", "name location");
+    .populate("turf", "name", "location");
       console.log(bookings, "bookings");
     return res.status(200).json(bookings);
   } catch (error) {
