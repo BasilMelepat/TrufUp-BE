@@ -87,10 +87,10 @@ export const verifyPayment = async (req, res) => {
       user.name,
       turf.name,
       turf.location,
+      totalPrice,
       formattedDate,
       formattedStartTime,
-      formattedEndTime,
-      totalPrice
+      formattedEndTime
     );
 
     // Create time slot and booking
