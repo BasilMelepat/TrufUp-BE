@@ -101,3 +101,57 @@ export const editTurfById = async (req, res) => {
     return res.status(500).json({ success: false, message: err.message });
   }
 };
+
+
+// delete turf by id
+export const deleteTurfById = async (req, res) => {
+  const owner = req.owner.id;
+  const { id } = req.params;
+
+  try {
+    const turf = await Turf.findOne({ owner: owner, _id: id });
+    
+    if (!turf) {
+      return res.status(404).json({ 
+        success: false, 
+        message: "Turf not found" 
+      });
+    }
+
+    // Delete from database
+    await Turf.findOneAndDelete({ owner: owner, _id: id });
+
+    // Get all remaining turfs for this owner
+    const allTurfs = await Turf.find({ owner: owner });
+
+    // Get updated turfs with average ratings
+    const turfsWithAvgRating = await Promise.all(
+      allTurfs.map(async (turf) => {
+        const reviewCount = turf.reviews.length;
+        const avgRating = reviewCount > 0
+          ? await Review.aggregate([
+              { $match: { turf: turf._id } },
+              { $group: { _id: null, avgRating: { $avg: "$rating" } } },
+            ])
+          : 0;
+        return {
+          ...turf.toObject(),
+          avgRating: avgRating[0] ? avgRating[0].avgRating : 0,
+        };
+      })
+    );
+
+    return res.status(200).json({ 
+      success: true, 
+      message: "Turf deleted successfully",
+      allTurfs: turfsWithAvgRating 
+    });
+
+  } catch (err) {
+    console.error(chalk.red("Error deleting turf:", err.message));
+    return res.status(500).json({ 
+      success: false, 
+      message: err.message 
+    });
+  }
+};
