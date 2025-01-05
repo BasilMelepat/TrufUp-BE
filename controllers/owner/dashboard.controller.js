@@ -2,7 +2,6 @@ import Booking from "../../models/booking.model.js";
 import Review from "../../models/review.model.js";
 import Turf from "../../models/turf.model.js";
 import User from "../../models/user.model.js";
- 
 
 export const getDashboardData = async (req, res) => {
   try {
