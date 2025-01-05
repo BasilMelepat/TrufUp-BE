@@ -8,7 +8,7 @@ export const getDashboardData = async (req, res) => {
   try {
     const ownerId =  req.owner.id;
 
-    // Step 1: Find all turfs owned by this owner
+    // Find all turfs owned by this owner
     const turfs = await Turf.find({ owner: ownerId }).select("_id name");
     const turfIds = turfs.map((turf) => turf._id);
 
@@ -52,7 +52,7 @@ export const getDashboardData = async (req, res) => {
       ]),
     ]);
 
-   const  rijobookingsPerTurf =  await Booking.aggregate([
+   const  turfupbookingsPerTurf =  await Booking.aggregate([
       { $match: { turf: { $in: turfIds } } },
       { $group: { _id: "$turf", bookings: { $sum: 1 } } },
       {
@@ -66,7 +66,7 @@ export const getDashboardData = async (req, res) => {
       { $unwind: "$turfInfo" },
       { $project: { name: "$turfInfo.name", bookings: 1 } },
     ]);
-      console.log(rijobookingsPerTurf, "rijobookingsPerTurf");
+      console.log(turfupbookingsPerTurf, "turfupbookingsPerTurf");
     res.json({
       totalBookings,
       totalReviews,
